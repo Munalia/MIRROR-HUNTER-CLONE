@@ -26,6 +26,7 @@
     <summary><b>Click Here For More Details</b></summary>
 
 ## Additional Features
+
 - Stop duplicate cloning Google Drive
 - Sudo with Database support
 - Counting Google Drive link
@@ -46,6 +47,7 @@
 
 ## How To Deploy it?
 <p><a href="https://github.com/Anime-Republic/MIRROR-HUNTER/wiki"> <img src="https://img.shields.io/badge/Deploy%20Guide-red?style=for-the-badge&logo=github" width="200""/></a></p>
+
  
  
  A Huge Thanks to [CyberNobie](https://github.com/cybernobie) For Fixing lot of Errors.
