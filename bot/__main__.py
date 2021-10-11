@@ -9,7 +9,6 @@ from pyrogram import idle, filters, types, emoji
 from bot import *
 from sys import executable
 from datetime import datetime
-from quoters import Quote
 import pytz
 import time
 import threading
@@ -26,7 +25,7 @@ from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_tim
 from .helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper import button_build
 from bot.helper import get_text, check_heroku
-from .modules import authorize, cancel_mirror, mirror_status, clone, delete, count
+from .modules import authorize, list, cancel_mirror, mirror_status, clone, delete, count
 now=datetime.now(pytz.timezone(f'{TIMEZONE}'))
 
 IMAGE_X = f"{IMAGE_URL}"
@@ -98,6 +97,8 @@ def bot_help(update, context):
 
 /{BotCommands.CloneCommand} [drive_url]: Copy file/folder to Google Drive
 
+/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
+
 /{BotCommands.CountCommand} [drive_url]: Count file/folder of Google Drive Links
 
 /{BotCommands.DeleteCommand} [drive_url]: Delete file from Google Drive (Only Owner & Sudo)
@@ -130,6 +131,8 @@ def bot_help(update, context):
 
 /{BotCommands.CloneCommand} [drive_url]: Copy file/folder to Google Drive
 
+/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
+
 /{BotCommands.CountCommand} [drive_url]: Count file/folder of Google Drive Link
 
 /{BotCommands.CancelMirror}: Reply to the message by which the download was initiated and that download will be cancelled
@@ -147,6 +150,7 @@ def bot_help(update, context):
 botcmds = [
         (f'{BotCommands.HelpCommand}','Get Detailed Help'),
         (f'{BotCommands.CloneCommand}','Copy file/folder to Drive'),
+        (f'{BotCommands.ListCommand}','Searches files in Drive'),
         (f'{BotCommands.CountCommand}','Count file/folder of Drive link'),
         (f'{BotCommands.DeleteCommand}','Delete file from Drive'),
         (f'{BotCommands.CancelMirror}','Cancel a task'),
