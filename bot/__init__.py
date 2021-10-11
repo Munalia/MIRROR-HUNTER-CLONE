@@ -408,7 +408,7 @@ try:
     if len(GD_INFO) == 0:
         GD_INFO = None
 except KeyError:
-    GD_INFO = 'Cloned by Clonebot'
+    GD_INFO = 'Cloned by Bot'
 
 try:
     ORDER_SORT = getConfig('ORDER_SORT')
@@ -450,7 +450,7 @@ try:
     if len(AUTHOR_NAME) == 0:
         AUTHOR_NAME = None
 except KeyError:
-    AUTHOR_NAME = 'Mirror Bot'
+    AUTHOR_NAME = 'Clone Bot'
 
 try:
     AUTHOR_URL = getConfig('AUTHOR_URL')

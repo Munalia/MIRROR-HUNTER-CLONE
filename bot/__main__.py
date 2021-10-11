@@ -9,6 +9,7 @@ from pyrogram import idle, filters, types, emoji
 from bot import *
 from sys import executable
 from datetime import datetime
+from quoters import Quote
 import pytz
 import time
 import threading
@@ -50,16 +51,14 @@ def stats(update, context):
             f'<b>🕊️ Free:</b> <b>{free}</b>\n' \
             f'<b>💻 CPU:</b> <b>{cpuUsage}%</b>\n' \
             f'<b>🖥️ RAM:</b> <b>{memory}%</b>\n' \
-            f'<b>💽 DISK:</b> <b>{disk}%</b>\n\n' \
-            f'<b>📊Data Usage📊</b>\n<b>📤 Upload:</b> <b>{sent}</b>\n' \
-            f'<b>📥 Download:</b> <b>{recv}</b>'
-
+            f'<b>💽 DISK:</b> <b>{disk}%</b>\n\n'
+            
     update.effective_message.reply_photo(IMAGE_X, stats, parse_mode=ParseMode.HTML)
 
 
 def start(update, context):
     start_string = f'''
-This bot can Clone all your links to Your Google Drive!
+This bot can Clone all your links to Your Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     buttons = button_build.ButtonMaker()
@@ -74,7 +73,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else :
             sendMarkup(start_string, context.bot, update, reply_markup)
     else :
-        sendMessage(f"Oops! not a Authorized user. Can Only be Used to receive links", context.bot, update)
+        sendMessage(f"Oops! not a Authorized user.You Can Use PM Only For Receiving Link.", context.bot, update)
 
 
 def restart(update, context):
@@ -97,9 +96,9 @@ def bot_help(update, context):
 
 /{BotCommands.CloneCommand} [drive_url]: Copy file/folder to Google Drive
 
-/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
-
 /{BotCommands.CountCommand} [drive_url]: Count file/folder of Google Drive Links
+
+/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
 
 /{BotCommands.DeleteCommand} [drive_url]: Delete file from Google Drive (Only Owner & Sudo)
 
@@ -131,9 +130,9 @@ def bot_help(update, context):
 
 /{BotCommands.CloneCommand} [drive_url]: Copy file/folder to Google Drive
 
-/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
+/{BotCommands.CountCommand} [drive_url]: Count file/folder of Google Drive Link.
 
-/{BotCommands.CountCommand} [drive_url]: Count file/folder of Google Drive Link
+/{BotCommands.ListCommand} [search term]: Searches the search term in the Google Drive, If found replies with the link
 
 /{BotCommands.CancelMirror}: Reply to the message by which the download was initiated and that download will be cancelled
 
@@ -150,8 +149,8 @@ def bot_help(update, context):
 botcmds = [
         (f'{BotCommands.HelpCommand}','Get Detailed Help'),
         (f'{BotCommands.CloneCommand}','Copy file/folder to Drive'),
-        (f'{BotCommands.ListCommand}','Searches files in Drive'),
         (f'{BotCommands.CountCommand}','Count file/folder of Drive link'),
+        (f'{BotCommands.ListCommand}','Searches files in Drive'),
         (f'{BotCommands.DeleteCommand}','Delete file from Drive'),
         (f'{BotCommands.CancelMirror}','Cancel a task'),
         (f'{BotCommands.CancelAllCommand}','Cancel all tasks'),
@@ -168,12 +167,13 @@ botcmds = [
 
 def main():
     # Heroku restarted
-     GROUP_ID = f'{RESTARTED_GROUP_ID}'
+    quo_te = Quote.print()
+    GROUP_ID = f'{RESTARTED_GROUP_ID}'
     kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
     jam = kie.strftime('\n📅 𝘿𝘼𝙏𝙀: %d/%m/%Y\n⏲️ 𝙏𝙄𝙈𝙀: %I:%M%P')
     if GROUP_ID is not None and isinstance(GROUP_ID, str):        
         try:
-            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ 𝐁𝐎𝐓 𝐆𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 ♻️\n{jam}\n\n🗺️ 𝙏𝙄𝙈𝙀 𝙕𝙊𝙉𝙀\n{TIMEZONE}\n\n𝙿𝙻𝙴𝙰𝚂𝙴 𝚁𝙴-𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙰𝙶𝙰𝙸𝙽\n#Restarted")
+            dispatcher.bot.sendMessage(f"{GROUP_ID}", f"♻️ 𝐁𝐎𝐓 𝐆𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 ♻️\n{jam}\n\n🗺️ 𝙏𝙄𝙈𝙀 𝙕𝙊𝙉𝙀\n{TIMEZONE}\n\n𝙿𝙻𝙴𝙰𝚂𝙴 𝚁𝙴-𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙰𝙶𝙰𝙸𝙽\n\n𝐐𝐮𝐨𝐭𝐞\n{quo_te}\n\n#Restarted")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -187,7 +187,7 @@ def main():
     jam = kie.strftime('\n📅 𝘿𝘼𝙏𝙀: %d/%m/%Y\n⏲️ 𝙏𝙄𝙈𝙀: %I:%M%P')
     if GROUP_ID2 is not None and isinstance(GROUP_ID2, str):        
         try:
-            dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ 𝐁𝐎𝐓 𝐆𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 ♻️\n{jam}\n\n🗺️ 𝙏𝙄𝙈𝙀 𝙕𝙊𝙉𝙀\n{TIMEZONE}\n\n𝙿𝙻𝙴𝙰𝚂𝙴 𝚁𝙴-𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙰𝙶𝙰𝙸𝙽\n#Restarted")
+            dispatcher.bot.sendMessage(f"{GROUP_ID2}", f"♻️ 𝐁𝐎𝐓 𝐆𝐎𝐓 𝐑𝐄𝐒𝐓𝐀𝐑𝐓𝐄𝐃 ♻️\n{jam}\n\n🗺️ 𝙏𝙄𝙈𝙀 𝙕𝙊𝙉𝙀\n{TIMEZONE}\n\n𝙿𝙻𝙴𝙰𝚂𝙴 𝚁𝙴-𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙰𝙶𝙰𝙸𝙽\n\n𝐐𝐮𝐨𝐭𝐞\n{quo_te}\n\n#Restarted")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"

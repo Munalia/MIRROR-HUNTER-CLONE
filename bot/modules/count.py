@@ -1,6 +1,3 @@
-# Implement By https://github.com/anasty17
-# © https://github.com/breakdowns/slam-mirrorbot
-
 from telegram.ext import CommandHandler
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
 from bot.helper.telegram_helper.message_utils import deleteMessage, sendMessage
@@ -14,7 +11,7 @@ def countNode(update, context):
     reply_to = update.message.reply_to_message
     if len(args) > 1:
         link = args[1]
-        elif reply_to is not None:
+         elif reply_to is not None:
         reply_text = reply_to.text
         link = reply_text.split('\n')[0]
     else:
