@@ -27,11 +27,10 @@
 
 ## Additional Features
 - Updater (**NOTE**: You must upload your **token.pickle** to Index and fill your **token.pickle** url to **TOKEN_PICKLE_URL**, because your **token.pickle** will deleted after update, for more info please check [Setting up config file](https://github.com/Anime-Republic/MIRROR-HUNTER#setting-up-config-file))
-- Limiting size Torrent/Direct, Tar/Unzip, Mega, cloning Google Drive support
-- Stop duplicate cloning Google Drive & mirroring Mega support
+- Cloning Google Drive support
+- Stop duplicate cloning Google Drive
 - Sudo with Database support
 - Counting Google Drive link
-- Heroku config support
 - View Link button
 - Shell and Executor
 - Support message send to log channel/group    
@@ -40,7 +39,6 @@
 
 ## From Original Repos
 - Copy files from someone's Drive to your Drive (Using Autorclone)
-- Download/Upload progress, Speeds and ETAs
 - Docker support
 - Index Link support
 - Service Account support
@@ -52,3 +50,8 @@
 ## How To Deploy it?
 <p><a href="https://github.com/Anime-Republic/MIRROR-HUNTER/wiki"> <img src="https://img.shields.io/badge/Deploy%20Guide-red?style=for-the-badge&logo=github" width="200""/></a></p>
     
+    
+A Huge Thanks to [CyberNobie](https://github.com/cybernobie) For Fixing lot of Errors.
+    
+# Note
+    You can Try deploying on railway or qovery, but we won't provide any guide for it. **We are not responsible for Account getting Flagged**
