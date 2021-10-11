@@ -1,3 +1,5 @@
+aria2p
+html-telegraph-poster
 aiohttp
 anytree
 appdirs

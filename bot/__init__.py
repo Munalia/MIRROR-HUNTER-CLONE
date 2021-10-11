@@ -6,7 +6,7 @@ import random
 import string
 import subprocess
 import requests
-
+import aria2p
 import telegram.ext as tg
 from dotenv import load_dotenv
 from pyrogram import Client
@@ -64,6 +64,14 @@ def mktable():
     except Error as e:
         logging.error(e)
         exit(1)
+
+aria2 = aria2p.API(
+    aria2p.Client(
+        host="http://localhost",
+        port=6800,
+        secret="",
+    )
+)
 
 DOWNLOAD_DIR = None
 BOT_TOKEN = None
@@ -400,7 +408,7 @@ try:
     if len(GD_INFO) == 0:
         GD_INFO = None
 except KeyError:
-    GD_INFO = 'Uploaded by Mirrorbot'
+    GD_INFO = 'Cloned by Clonebot'
 
 try:
     ORDER_SORT = getConfig('ORDER_SORT')
