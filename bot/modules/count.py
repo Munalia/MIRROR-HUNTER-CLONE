@@ -8,15 +8,8 @@ from bot import dispatcher
 
 def countNode(update, context):
     args = update.message.text.split(" ", maxsplit=1)
-    reply_to = update.message.reply_to_message
     if len(args) > 1:
         link = args[1]
-         elif reply_to is not None:
-        reply_text = reply_to.text
-        link = reply_text.split('\n')[0]
-    else:
-        link = None
-    if link is not None:
         msg = sendMessage(f"Counting: <code>{link}</code>", context.bot, update)
         gd = GoogleDriveHelper()
         result = gd.count(link)
@@ -26,7 +19,7 @@ def countNode(update, context):
         else:
             uname = f'<a href="tg://user?id={update.message.from_user.id}">{update.message.from_user.first_name}</a>'
         if uname is not None:
-            cc = f'\n\nCounting by: {uname}'
+            cc = f'\n\n<b>cc: </b>{uname}'
         sendMessage(result + cc, context.bot, update)
     else:
         sendMessage("Provide G-Drive Shareable Link to Count.", context.bot, update)
